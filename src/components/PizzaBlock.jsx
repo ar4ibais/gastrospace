@@ -1,21 +1,43 @@
-const PizzaBlock = ({ title, price }) => {
+import { useState } from 'react';
+import foodImage from '../assets/img/foods/mushroom-soup.png'
+
+const PizzaBlock = ({
+    title,
+    price,
+    imageUrl,
+    sizes,
+    types
+}) => {
+
+    const typesName = ['специальное', 'традиционное']
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
+
     return (
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="./img/foods/mushroom-soup.png"
+                src={imageUrl}
                 alt="food"
             />
             <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">специальное</li>
-                    <li>традиционное</li>
+                    {types.map((typeId) => (
+                        <li
+                            key={typeId}
+                            onClick={() => setActiveType(typeId)} className={activeType === typeId && 'active'}
+                        >{typesName[typeId]}</li>
+                    ))}
                 </ul>
                 <ul>
-                    <li className="active">260 г</li>
-                    <li>300 г</li>
-                    <li>400 г</li>
+                    {sizes.map((size, index) => (
+                        <li
+                            key={index}
+                            onClick={() => setActiveSize(index)}
+                            className={activeSize === index && 'active'}
+                        >{size} г</li>
+                    ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">

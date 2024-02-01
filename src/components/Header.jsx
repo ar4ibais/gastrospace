@@ -1,9 +1,11 @@
+import logo from '../assets/img/pizza-logo.png'
+
 const Header = () => {
     return (
         <div className="header">
             <div className="container">
                 <div className="header__logo">
-                    <img width="50" src="./img/pizza-logo.png" alt="logo" />
+                    <img width="55" src={logo} alt="logo" />
                     <div>
                         <h1>Gastro Space</h1>
                         <p>самая вкусная еда во вселенной</p>
