@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import foodImage from '../assets/img/foods/mushroom-soup.png'
+
 
 const PizzaBlock = ({
     title,
