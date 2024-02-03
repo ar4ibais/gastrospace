@@ -30,3 +30,19 @@
 		}
 	}
 }
+
+@media (max-width: 575px) {
+	.header {
+		padding: 20px 0;
+		.container {
+			flex-direction: column;
+			row-gap: 20px;
+		}
+		&__logo h1 {
+			font-size: 20px;
+		}
+		&__logo p {
+			font-size: 14px;
+		}
+	}
+}
