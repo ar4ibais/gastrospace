@@ -28,7 +28,6 @@ body {
 		display: grid;
 		grid-column-gap: 30px;
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(2, 1fr);
 	}
 
 	&__top {
