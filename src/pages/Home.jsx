@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 import Categories from "../components/Categories";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Sketeton";
 import Sort from "../components/Sort";
 import Pagination from "../components/Pagination";
-import { setCategoryId } from "../redux/slices/filterSlice";
+import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 
 const Home = ({ searchValue }) => {
     const dispatch = useDispatch()
-    const { categoryId, sort } = useSelector(state => state.filter)
+    const { categoryId, sort, currentPage } = useSelector(state => state.filter)
 
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1)
 
     const foods = items.map(obj => (
         <PizzaBlock key={obj.id} {...obj} />
@@ -25,20 +25,22 @@ const Home = ({ searchValue }) => {
         dispatch(setCategoryId(id))
     }
 
+    const onChangePage = (num) => {
+        dispatch(setCurrentPage(num))
+    }
+
     useEffect(() => {
         setIsLoading(true)
         const order = sort.sortProperty.includes('-') ? 'asc' : 'desc',
             sortBy = sort.sortProperty.replace('-', ''),
             category = categoryId > 0 ? `category=${categoryId}` : '',
             search = searchValue && `&search=${searchValue}`
-        fetch(
-            `https://65bd1a6db51f9b29e932ed9f.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-        )
-            .then(data => data.json())
-            .then(json => {
-                setItems(json)
-                setIsLoading(false)
-            })
+
+        axios.get(`https://65bd1a6db51f9b29e932ed9f.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`).then(({ data }) => {
+            setItems(data)
+            setIsLoading(false)
+        })
+
         window.scrollTo(0, 0)
     }, [categoryId, sort, searchValue, currentPage])
 
@@ -52,7 +54,7 @@ const Home = ({ searchValue }) => {
             <div className="content__items">
                 {isLoading ? skeletons : foods}
             </div>
-            <Pagination onChangePage={number => setCurrentPage(number)} />
+            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
         </div>
     );
 }
