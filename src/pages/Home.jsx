@@ -5,12 +5,13 @@ import axios from "axios";
 import Categories from "../components/Categories";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Sketeton";
-import Sort from "../components/Sort";
+import Sort, { sortList } from "../components/Sort";
 import Pagination from "../components/Pagination";
 import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 
 const Home = ({ searchValue }) => {
     const dispatch = useDispatch()
+
     const { categoryId, sort, currentPage } = useSelector(state => state.filter)
 
     const [items, setItems] = useState([])
@@ -40,9 +41,7 @@ const Home = ({ searchValue }) => {
             setItems(data)
             setIsLoading(false)
         })
-
-        window.scrollTo(0, 0)
-    }, [categoryId, sort, searchValue, currentPage])
+    }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
     return (
         <div className="container">
