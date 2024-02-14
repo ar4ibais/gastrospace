@@ -35,6 +35,20 @@ body {
 		align-items: center;
 		justify-content: space-between;
 	}
+	&__info-error {
+		margin: 60px auto;
+		max-width: 580px;
+		text-align: center;
+		width: 100%;
+		h2 {
+			font-size: 32px;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		p {
+			font-size: 22px;
+		}
+	}
 }
 
 .container {
