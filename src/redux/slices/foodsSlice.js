@@ -47,5 +47,7 @@ const foodsSlice = createSlice({
     }
 })
 
+export const selectFoods = (state) => state.foods
+
 export const { setItems } = foodsSlice.actions;
 export default foodsSlice.reducer 
