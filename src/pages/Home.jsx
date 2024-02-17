@@ -83,7 +83,7 @@ const Home = () => {
             <PizzaBlock {...obj} />
         </Link >
     ))
-    const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />)
+    const skeletons = [...new Array(4)].map((_, i) => <Skeleton key={i} />)
 
     return (
         <div className="container">
