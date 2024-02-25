@@ -18,7 +18,8 @@ import {
 import { fetchFoods, selectFoods } from '../redux/slices/foodsSlice';
 import { useAppDispatch } from '../redux/store';
 
-import { FoodsData } from '../FoodsData';
+import f1 from '../../public/foods/bolonese.png';
+console.log(f1);
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
