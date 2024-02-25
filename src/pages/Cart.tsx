@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 import { clearItems, selectCart } from '../redux/slices/cartSlice';
+import CartEmpty from '../assets/img/empty-cart.png';
 
 const Cart: React.FC = () => {
 	const dispatch = useDispatch();
@@ -143,7 +144,7 @@ const Cart: React.FC = () => {
 							<br />
 							Для того, чтобы заказать пиццу, перейди на главную страницу.
 						</p>
-						<img src="src/assets/img/empty-cart.png" alt="Empty cart" />
+						<img src={CartEmpty} alt="Empty cart" />
 						<Link to="/" className="button button--black">
 							<span>Вернуться назад</span>
 						</Link>
