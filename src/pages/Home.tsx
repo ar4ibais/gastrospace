@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import QueryString from 'qs';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Sketeton';
-import Sort, { sortList } from '../components/Sort';
+import SortComponent, { sortList } from '../components/Sort';
 import Pagination from '../components/Pagination';
 
 import {
@@ -27,9 +27,9 @@ const Home: React.FC = () => {
 	const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
 	const { items, status } = useSelector(selectFoods);
 
-	const onChangeCategory = (id: number) => {
+	const onChangeCategory = useCallback((id: number) => {
 		dispatch(setCategoryId(id));
-	};
+	}, []);
 
 	const onChangePage = (num: number) => {
 		dispatch(setCurrentPage(num));
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
 		<div className="container">
 			<div className="content__top">
 				<Categories value={categoryId} onChangeCategory={onChangeCategory} />
-				<Sort />
+				<SortComponent value={sort} />
 			</div>
 			<h2 className="content__title">Все блюда</h2>
 			{status === 'error' ? (

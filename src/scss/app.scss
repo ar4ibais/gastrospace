@@ -126,16 +126,25 @@ body {
 
 	&__item {
 		display: flex;
+		justify-content: space-between;
 		width: 100%;
 		border-top: 1px solid $gray-line;
 		padding-top: 30px;
 		margin-top: 30px;
 
+		&-preview,
+		&-params {
+			display: flex;
+		}
+
+		&-params {
+			column-gap: 20px;
+		}
 		&-img {
 			display: flex;
 			align-items: center;
 			margin-right: 15px;
-			width: 10%;
+			// width: 10%;
 
 			img {
 				width: 80px;
@@ -147,7 +156,7 @@ body {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			width: 40%;
+			// width: 40%;
 
 			h3 {
 				font-weight: bold;
@@ -166,7 +175,7 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			width: 13%;
+			// width: 13%;
 
 			&-minus {
 				svg {
@@ -174,10 +183,25 @@ body {
 						display: none;
 					}
 				}
+
+				&--disabled {
+					opacity: 0.4;
+					cursor: default;
+					&:hover {
+						background-color: transparent;
+						svg path {
+							fill: #fe5f1e;
+						}
+					}
+					&:active {
+						transform: none;
+					}
+				}
 			}
 
 			b {
 				font-size: 22px;
+				padding: 0 15px;
 			}
 		}
 
@@ -185,7 +209,7 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 33%;
+			// width: 33%;
 
 			b {
 				font-weight: bold;
@@ -198,7 +222,7 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			width: 4%;
+			// width: 4%;
 
 			.button {
 				border-color: darken($color: $gray-line, $amount: 10);
@@ -354,6 +378,24 @@ body {
 	}
 }
 
+@media (max-width: 992px) {
+	.container--cart {
+		margin: 0 auto;
+	}
+	.cart__bottom {
+		margin: 50px 0 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.cart {
+		&__item {
+			flex-direction: column;
+			row-gap: 30px;
+		}
+	}
+}
+
 @media (max-width: 720px) {
 	.wrapper {
 		width: calc(100vw - 50px);
@@ -363,6 +405,42 @@ body {
 		padding: 20px 0;
 		&__items {
 			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+	.cart--empty {
+		width: auto;
+	}
+}
+
+@media (max-width: 550px) {
+	.cart {
+		&__top {
+			flex-direction: column;
+			row-gap: 20px;
+			align-items: flex-start;
+		}
+		&__bottom-details {
+			flex-direction: column;
+		}
+		&__bottom-buttons .go-back-btn {
+			width: auto;
+			padding: 10px;
+			min-width: 50px;
+			width: 60px;
+			svg {
+				margin-right: 0;
+			}
+			span {
+				display: none;
+			}
+		}
+	}
+	.cart--empty {
+		h2 {
+			font-size: 28px;
+		}
+		img {
+			width: -webkit-fill-available;
 		}
 	}
 }

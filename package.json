@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "@tsconfig/vite-react": "^3.0.0",
+    "ahooks": "^3.7.10",
     "axios": "^1.6.7",
     "lodash.debounce": "^4.0.8",
     "qs": "^6.11.2",
