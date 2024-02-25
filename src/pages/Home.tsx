@@ -18,6 +18,8 @@ import {
 import { fetchFoods, selectFoods } from '../redux/slices/foodsSlice';
 import { useAppDispatch } from '../redux/store';
 
+import { FoodsData } from '../FoodsData';
+
 const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
