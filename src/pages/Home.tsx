@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import QueryString from 'qs';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
@@ -16,10 +16,11 @@ import {
 	setFilters,
 } from '../redux/slices/filterSlice';
 import { fetchFoods, selectFoods } from '../redux/slices/foodsSlice';
+import { useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const isSearch = useRef(false);
 	const isMounted = useRef(false);
 
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
 				sortBy,
 				category,
 				search,
-				currentPage,
+				currentPage: String(currentPage),
 			}),
 		);
 	};
@@ -87,11 +88,7 @@ const Home: React.FC = () => {
 		isSearch.current = false;
 	}, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-	const foods = items.map((obj: any) => (
-		<Link key={obj.od} to={`/dish/${obj.id}`}>
-			<PizzaBlock {...obj} />
-		</Link>
-	));
+	const foods = items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />);
 	const skeletons = [...new Array(4)].map((_, i) => <Skeleton key={i} />);
 
 	return (
