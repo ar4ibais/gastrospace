@@ -28,6 +28,8 @@ import f7 from '../../public/foods/rostbeef.png';
 import f8 from '../../public/foods/sushi.png';
 import f9 from '../../public/foods/grek-salad.png';
 
+console.log(f1, f2, f3, f4, f5, f6, f7, f8, f9);
+
 const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
