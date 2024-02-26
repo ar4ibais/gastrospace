@@ -24,11 +24,9 @@ import f3 from '../../public/foods/burger.png';
 import f4 from '../../public/foods/carbonara.png';
 import f5 from '../../public/foods/molluski.png';
 import f6 from '../../public/foods/mushroom-soup.png';
-import f7 from '../../public/foods/shashlyk.png';
+import f7 from '../../public/foods/rostbeef.png';
 import f8 from '../../public/foods/sushi.png';
 import f9 from '../../public/foods/grek-salad.png';
-
-console.log(f1, f2, f3, f4, f5, f6, f7, f8, f9);
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
