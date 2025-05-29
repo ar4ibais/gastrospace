@@ -1,3 +1,15 @@
 .root {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.image404 {
+	max-height: 300px;
+	width: fit-content;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	object-fit: contain;
+	border-radius: 20px;
 }
